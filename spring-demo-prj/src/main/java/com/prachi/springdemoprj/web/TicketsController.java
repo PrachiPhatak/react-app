@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path ="api/tickets", headers = "Accepts=application/json")
+@RequestMapping(path ="/api/tickets")
 public class TicketsController {
 
     private final TicketsRepository ticketsRepository;
@@ -22,16 +22,16 @@ public class TicketsController {
     }
 
     @PostMapping
-    private void createTicket(@RequestParam Ticket newTicket){
+    private void createTicket(@RequestBody Ticket newTicket){
         ticketsRepository.save(newTicket);
     }
 
     @PutMapping
-    private void updateTicket(@RequestParam Ticket newTicket){
+    private void updateTicket(@RequestBody Ticket newTicket){
         ticketsRepository.save(newTicket);
     }
 
-    @DeleteMapping("{/id}")
+    @DeleteMapping("{id}")
     private void deleteTicket(@PathVariable Long id){
         ticketsRepository.deleteById(id);
     }
